@@ -12,19 +12,43 @@ import firebase from 'firebase';
 export class HomePage {
 
   comment;
+  arr=[];
+  index =0;
   constructor(public navCtrl: NavController) {
 
 
-      firebase.database().ref("comments/").on("value",(data: any)=>{
+      firebase.database().ref("comments/"+"velRTmmC3JatACP25mFofaMUgfb2").on("value",(data: any)=>{
         let commentsinfor = data.val();
-        console.log()
+        
+        console.log(commentsinfor)
+        var keys = Object.keys(commentsinfor);
+        
+        for(let i = 0; i< keys.length;++i){
+          let k = keys[i];
+
+          let obj = { 
+            comment: commentsinfor[k].comment,
+            uid:"NON7INb3OVgnI0xcMI4HlVKl05I3",
+            date: moment(commentsinfor[k].date, 'MMMM Do YYYY, h:mm:ss a').startOf('minutes').fromNow(),
+
+                    }
+
+                    this.index=1+ i;
+                   
+                    this.arr.push(obj);
+                    this.arr.reverse();
+                    console.log(this.arr);
+
+               
+                
+        }
 
       })
 
   }
 
   comments() {
-
+    this.arr = [];
     alert("wotrking");
 
     var user = "NON7INb3OVgnI0xcMI4HlVKl05I3"
@@ -35,7 +59,7 @@ export class HomePage {
         date: day,
        
       })
-    
+   
     };
  //------------------------------------------------------------------------------------
 

@@ -9,7 +9,16 @@
 <ion-content padding>
 <ion-input [(ngModel)]="comment" placeholder="comment"></ion-input>
 <button ion-button full (click)="comments()">comments</button>
-<ion-card>
-<h1>comments</h1>
-</ion-card>
+<h1>comments {{index}}</h1>
+<ion-card *ngFor="let x of arr">
+    <ion-card-header>
+      {{x.uid}}
+    </ion-card-header>
+    <ion-card-content>
+     {{x.comment}}<br>
+     {{x.date}}
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
