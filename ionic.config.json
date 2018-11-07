@@ -1,0 +1,7 @@
+{
+  "name": "comments",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
